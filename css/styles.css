@@ -224,6 +224,11 @@ h1 {
   margin-bottom: 30px;
 }
 
+.icon-container .svg-icon {
+  width: 70px;
+  height: 70px;
+}
+
 .about-us .description {
   font-weight: 400;
   font-size: 14px;
