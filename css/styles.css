@@ -125,7 +125,8 @@ h1 {
 }
 
 .contact-item .link {
-  display: block;
+  display: inline-flex;
+  align-items: center;
   padding-top: 32px;
   padding-bottom: 32px;
   color: var(--description-text-color);
@@ -135,10 +136,29 @@ h1 {
   letter-spacing: 0.02em;
 }
 
+.link-cont {
+  display: inline;
+}
+
 .contact-item .link:hover,
 .contacts-item .link:focus {
   color: var(--accent-color);
 }
+
+.link-icon {
+  width: 16px;
+  height: 12px;
+  display: inline-block;
+  cursor: pointer;
+  fill: var(--description-text-color);
+  margin-right: 10px;
+}
+
+.contact-item .link:hover .link-icon,
+.contact-item .link:focus .link-icon {
+  fill: #2196f3;
+}
+
 /* Hero */
 
 .hero {
@@ -146,7 +166,12 @@ h1 {
   padding-bottom: 200px;
   /* outline: 2px solid violet; */
   margin-bottom: 94px;
-  background-image: linear-gradient(to right, rgba(47, 48, 58, 0.8), rgba(47, 48, 58, 0.8)), url(../images/hero/bg.jpg);
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.8),
+      rgba(47, 48, 58, 0.8)
+    ),
+    url(../images/hero/bg.jpg);
   max-width: 1600px;
   height: 600px;
   background-repeat: no-repeat;
@@ -215,18 +240,33 @@ h1 {
   text-transform: uppercase;
   margin-bottom: 10px;
 }
-.about-us-item .icon-container {
-  background: #f5f4fa;
+
+.about-us-item::before {
+  display: block;
+  content: "";
+  height: 120px;
+  background-color: #f5f4fa;
   border-radius: 4px;
-  padding-left: 100px;
-  padding-top: 25px;
-  padding-bottom: 25px;
   margin-bottom: 30px;
+  background-size: 70px 70px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.icon-container .svg-icon {
-  width: 70px;
-  height: 70px;
+.about-us-item.icon-details::before {
+  background-image: url("../images/about-us/antenna.svg");
+}
+
+.about-us-item.icon-punctuality::before {
+  background-image: url("../images/about-us/clock.svg");
+}
+
+.about-us-item.icon-planning::before {
+  background-image: url("../images/about-us/diagram.svg");
+}
+
+.about-us-item.icon-up-to-date::before {
+  background-image: url("../images/about-us/astronaut.svg");
 }
 
 .about-us .description {
@@ -282,7 +322,8 @@ h1 {
   margin-right: 30px;
 }
 .team-member {
-  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12);
   border-radius: 0px 0px 4px 4px;
   background: #ffffff;
 }
@@ -329,9 +370,32 @@ h1 {
   /* outline: 2px dotted blue; */
 }
 
+.social-nw.list .social-nw-link {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-nw.list .social-nw-link:hover {
+  background-color: #2196f3;
+}
+.social-nw-link .nw-icon {
+  display: block;
+  cursor: pointer;
+  fill: #afb1b8;
+}
+
+.social-nw-link:hover .nw-icon {
+  fill: #ffffff;
+}
+
 .social-nw.list .item:not(:last-child) {
   margin-right: 10px;
 }
+
 /* Clients */
 .clients.section {
   margin-bottom: 94px;
@@ -344,15 +408,27 @@ h1 {
   margin-right: 30px;
 }
 
-.client-logo {
+.client-logo .company-icon {
+  fill: #afb1b8;
+}
+
+.client-logo .link {
+  display: flex;
   width: 170px;
   height: 90px;
   border-width: 1px;
   border-color: #afb1b8;
   border-style: solid;
   border-radius: 4px 4px 4px 4px;
-  padding-left: 63px;
-  padding-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.client-logo .link:hover .company-icon {
+  fill: #2196f3;
+}
+.client-logo .link:hover {
+  border-color: #2196f3;
 }
 
 /* Footer */
@@ -407,12 +483,30 @@ footer {
   color: #ffffff;
   margin-bottom: 20px;
 }
-.join-us-container .list {
+.join-us.list {
   display: flex;
 }
 
-.join-us-container .list .item:not(:last-child) {
+.join-us.list .item:not(:last-child) {
   margin-right: 10px;
+}
+
+.join-us-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+}
+
+.join-us-link:hover {
+  background-color: #2196f3;
+}
+
+.join-us-link .nw-icon {
+  fill: #ffffff;
 }
 
 /* Portfolio */
@@ -440,7 +534,8 @@ footer {
   background-color: var(--accent-color);
   color: var(--primary-bg-color);
   background: var(--accent-color);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 3px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 3px 1px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 
